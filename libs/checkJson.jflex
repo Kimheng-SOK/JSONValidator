@@ -45,7 +45,7 @@ InvalidNumber = "-"? "0"{Digit}+ | {Number}"."{Digit}*"."
 
 /* String components - be more strict */
 /* Valid characters: printable chars except " and \ and control chars */
-StringChar = [^\"\\\u0000-\u001F]
+StringChar = [^\"\\\u0000-\u001F\u007F-\u009F]
 /* Valid escape sequences only */
 ValidEscape = "\\" ([\"\\/bfnrt] | "u"[0-9a-fA-F]{4})
 

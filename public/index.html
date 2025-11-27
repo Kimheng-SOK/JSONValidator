@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>JSON Validator - Complex Mode</title>
+    <link rel="stylesheet" href="public/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- <header>
+            <h1>✨ Advanced JSON Validator</h1>
+            <p class="subtitle">Lexical Analysis + Structural Parsing for Robust Validation</p>
+        </header> -->
+        <header class="app-header">
+            <div class="logo-container">
+                <img src="public/logo.png" alt="Logo" class="logo-icon">
+            </div>
+            <div class="header-text">
+                <h1>Advanced JSON Validator</h1>
+                <!-- <p class="subtitle">Lexical Analysis + Structural Parsing for Robust Validation</p> -->
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <div class="section-header">
+                    <h2>Input JSON</h2>
+                    <!-- <div class="button-group">
+                        <button onclick="document.getElementById('fileInput').click()" class="btn btn-secondary btn-icon">
+                            <span class="material-icons">upload_file</span> Upload JSON File
+                        </button>
+                        <input type="file" id="fileInput" style="display: none;" accept=".json" onchange="handleFileUpload(event)">
+                        <button onclick="loadExample('valid')" class="btn btn-secondary">Load Valid</button>
+                        <button onclick="loadExample('invalid')" class="btn btn-secondary">Load Invalid</button>
+                        <button onclick="clearInput()" class="btn btn-secondary">Clear</button>
+                    </div> -->
+                    <div class="button-group">
+                        <button onclick="document.getElementById('fileInput').click()" class="btn btn-action upload-btn">
+                            <span class="material-icons">upload_file</span> Upload File
+                        </button>
+                        <input type="file" id="fileInput" style="display: none;" accept=".json" onchange="handleFileUpload(event)">
+                        <button onclick="loadExample('valid')" class="btn btn-action load-valid-btn">
+                            <span class="material-icons">check_circle</span> Valid Example
+                        </button>
+                        <button onclick="loadExample('invalid')" class="btn btn-action load-invalid-btn">
+                            <span class="material-icons">error</span> Invalid Example
+                        </button>
+                        <button onclick="clearInput()" class="btn btn-action clear-btn">
+                            <span class="material-icons">delete_sweep</span> Clear All
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="dropZone" class="drop-zone">
+                    <textarea id="jsonInput" placeholder="Enter your JSON here or drag and drop a JSON file...
+
+Example:
+{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;age&quot;: 30,
+  &quot;active&quot;: true
+}"></textarea>
+
+                    <div class="drop-message" id="dropMessage">
+                        <span class="material-icons">cloud_upload</span>
+                        <p>Drag and drop a JSON file here, or type/paste your JSON above.</p>
+                    </div>
+                </div>
+                <button onclick="validateJSON()" class="btn btn-primary">Validate JSON</button>
+            </div>
+
+            <div class="output-section">
+                <div class="section-header">
+                    <h2>Validation Result</h2>
+                    <span id="statusBadge" class="status-badge"></span>
+                </div>
+                <div id="resultContainer" class="result-container">
+                    <div class="placeholder">
+                        <span class="material-icons">data_object</span>
+                        <p>Enter JSON or upload a file to start validation.</p>
+                    </div>
+                </div>
+                <div id="errorList" class="error-list hidden"></div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>Validation Features</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-1">terminal</span>
+                    <strong>Lexical Analysis</strong>
+                    <p>Detects invalid characters, malformed strings, and number formats</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-2">account_tree</span>
+                    <strong>Structure Validation</strong>
+                    <p>Checks object/array nesting, brackets, and syntax rules</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-3">bolt</span>
+                    <strong>Fast Processing</strong>
+                    <p>Uses JFlex lexer and recursive descent parser</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-4">gavel</span>
+                    <strong>Detailed Errors</strong>
+                    <p>Provides specific error messages for debugging</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="features">
+            <h3>Special features of our Web App</h3>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-5">drag_indicator</span>
+                    <strong>Drag and Drop</strong>
+                    <p>Allows users to drag and drop JSON files for validation</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-6">face</span>
+                    <strong>User friendly</strong>
+                    <p>Clean and intuitive interface for easy navigation</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-7">devices</span>
+                    <strong>Use On everything</strong>
+                    <p>Responsive design for all devices</p>
+                </div>
+                <div class="feature-item">
+                    <span class="material-icons feature-icon icon-8">cloud</span>
+                    <strong>Access Everywhere</strong>
+                    <p>Accessible from any device with an internet connection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <footer>
+            <p>Built with JFlex Lexer + Recursive Descent Parser | Python Flask Backend</p>
+        </footer> -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <p class="footer-title">ITC GROUP A</p>
+                <div class="visitor-stats">
+                    <span class="material-icons visitor-icon">visibility</span>
+                    <span id="visitorCount">Loading visitor count...</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Documentation</a>
+                <!-- <a href="#" class="footer-link">API Status</a> -->
+                <a href="#" class="footer-link">Source Code</a>
+            </div>
+            <div class="footer-legal">
+                &copy; 2025 Advanced Validators Inc.
+            </div>
+        </footer>
+    </div>
+
+    <script src="public/script.js"></script>
+</body>
+</html>

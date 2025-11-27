@@ -93,7 +93,7 @@ def validate_json():
         json_input = data['json']
         
         # Create temporary file with JSON input
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as temp_file:
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False, encoding='utf-8') as temp_file:
             temp_file.write(json_input)
             temp_filename = temp_file.name
         
